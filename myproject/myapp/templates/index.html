@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" 
+          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+            crossorigin="anonymous"></script>
+            {% load static %}
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Kalam:wght@400;700&family=Raleway&family=Roboto:wght@400;500;600;700;&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+	<title>Puppies Paradise</title>
+	<link rel="stylesheet" type="text/css" href="static/index.css">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div>
+		<div id="pg1">
+		<p id="logotag">Puppies Paradise</p>
+		<div id="sidetab">
+		<a href="#pg1"><p id="tabtxt2">Home</p></a>
+		<a href="#pg2"><p id="tabtxt2">Pricing</p></a>
+		<p id="tabtxt2">Contact</p>
+			<p id="tabtxt2">Calendar</p>
+	</div>
+
+		<div id="msgdiv" >
+			<p id="bigmsg">Our Dogs Will Always<br> Be Puppies In Our <br>   Heart! </p> 
+			<p id="smallmsg" >We'll take of your dogs lovingly like they were our own. We’ll take your dog on walks, play with them, feed them, and make sure they feel comfortable. Compared to dog hotels, we will only take one dog at a time so that we can focus on that dog and that dog only. 
+</p>
+	
+<img id="yogi"src="static/media/images/yogi.jpg">
+			
+			<a href="#pg3"><div id="button"><span style="position:absolute;top:25%;left:20%;">Contact Us</span></div></a>
+	</div>
+	<div id="pg2">
+		<img id="priceimg"src="static/media/images/pricing.png">
+		<div id="headiv">
+			<p id="backinfo">Pricing</p>
+		</div>
+		<div id="msgdiv2">
+			<p id="infomsg">Our rates are reasonable compared to some other pet sitters. Most pet sitters around the El Dorado Hills, Folsome area charge on average $60-75 per day and almost never less than $40. One the other hand we only charge $33 a day and $200 per week. Before we will have a free one day trial to get your dog used to the environment so they will be in a familiar environment when they are dropped off for their stay! You can click the button below to calculate the price of your stay.
+</p>
+	
+		</div>
+		
+		<a href="#pg5"><div id="button2"><span style="position:absolute;top:12px;left:25px;">Calculate price</span></div></a>
+	</div>
+	<div id="pg3">
+		<img id="contactimg"src="static/media/images/contact.png">
+		<div id="headiv2">
+			<p id="backinfo2">Book Stay</p>
+		</div>
+		<div id="msgdiv3">
+			<p id="infomsg2">To book dates with us you can either contact us using out contact information below or you could fill out the contact form and we could contact you.
+</p>
+	<p id="number"><span style="font-family: 'Raleway', sans-serif;font-weight:600;">Phone Number</span> - 908-332-4948</p>
+	<p id="email"><span style="font-family: 'Raleway', sans-serif;font-weight:600;">Email</span> - puppy.paradise7707@gmail.com </p>
+		</div>
+	
+		<div id="pg4">
+			<p id="yes">Availability</p>
+			<div id="nodiv"><p id="txt69"style="">Check the days that are available on our calendar and give either send us a call, text, or email letting us information on your dogs visit with us!</p></div>
+			<iframe src="https://calendar.google.com/calendar/embed?src=d3alpcut3pudifu1ct79pdihg8%40group.calendar.google.com&ctz=America%2FLos_Angeles" id="cal"style="" width="600" height="400" frameborder="0" scrolling="no"></iframe>
+		</div>
+	
+
+	
+	<div style="position:absolute;top:195%;left:0%;width:100%;height:70%;background-color:#FFF5ED;"id="pg5">
+		<div style="position:absolute;top:8%;left:4.2%;width:47%;height:10%;}"id="headiv4">
+			<p id="backinfo4">Calculate price of your pets stay</p>
+		</div>
+		<div style=""id="msgdiv5">
+			<p id="infomsg4">Enter the number of days your dog will be staying with us and we'll tell you the cost of your dogs stay.</p>
+			<p id="enter">Number of days:</p>
+			<form method="POST" id="form">{% csrf_token %}
+  	{% for field in form %}
+      
+  	{{ field }}
+
+  	{% endfor %} <button type="submit">Submit</button></form>
+  	<script>
+    const form = document.getElementById('form');
+    form.addEventListener("submit", submitHandler);
+
+    function submitHandler(e) {
+    	console.log("working")
+        e.preventDefault();
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            data        : $('#form').serialize(), // our form data
+            dataType    : 'json',
+            url         : '{% url "view_function" %}', // the url where we want to POST
+            
+            success     : successFunction
+        });
+    }
+
+    function successFunction(msg) {
+            alert(msg.reply);
+            form.reset()
+       
+    }
+
+</script>
+</div>
+		
+	
+	
+	
+
+</body>
+</html>
